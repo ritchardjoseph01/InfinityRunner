@@ -22,4 +22,12 @@ public class BlockTile : MonoBehaviour
     {
         
     }
+
+    public GameObject obstaclePrefab;
+
+    void SpawnObstacle()
+    {
+        // Choose random point for obstacle spawn
+        int obstacleSpawnIndex = Random.Range(2, 5); //choosing randomly between indexes 
+    }
 }
