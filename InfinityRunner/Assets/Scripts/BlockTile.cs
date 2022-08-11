@@ -3,31 +3,23 @@ using UnityEngine;
 public class BlockTile : MonoBehaviour
 {
     BlockSpawner blockSpawner;
+    [SerializeField] GameObject coinPrefab;
+    [SerializeField] GameObject obstaclePrefab;
 
 
     // Start is called before the first frame update
     void Start()
     {
         blockSpawner = GameObject.FindObjectOfType<BlockSpawner>(); // Referencing BlockSpawner Script
-        SpawnObstacle();
-        SpawnCoin();
     }
 
     private void OnTriggerExit (Collider other)
     {
-        blockSpawner.SpawnTile();
+        blockSpawner.SpawnTile(true);
         Destroy(gameObject, 2);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public GameObject obstaclePrefab;
-
-    void SpawnObstacle()
+    public void SpawnObstacle()
     {
         // Choose random point for obstacle spawn
         int obstacleSpawnIndex = Random.Range(2, 5); //choosing randomly between indexes 
@@ -36,9 +28,8 @@ public class BlockTile : MonoBehaviour
         Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
     }
 
-    public GameObject coinPrefab;
 
-    void SpawnCoin()
+    public void SpawnCoin()
     {
         int coinsToSpawn = 10;
         for (int i = 0; i < coinsToSpawn; i++)
