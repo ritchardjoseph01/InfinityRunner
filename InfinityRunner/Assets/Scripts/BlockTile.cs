@@ -9,6 +9,8 @@ public class BlockTile : MonoBehaviour
     void Start()
     {
         blockSpawner = GameObject.FindObjectOfType<BlockSpawner>(); // Referencing BlockSpawner Script
+        SpawnObstacle();
+    
     }
 
     private void OnTriggerExit (Collider other)
@@ -29,5 +31,8 @@ public class BlockTile : MonoBehaviour
     {
         // Choose random point for obstacle spawn
         int obstacleSpawnIndex = Random.Range(2, 5); //choosing randomly between indexes 
+        Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
+
+        Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
     }
 }
