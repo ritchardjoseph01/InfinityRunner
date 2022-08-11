@@ -43,7 +43,7 @@ public class BlockTile : MonoBehaviour
         int coinsToSpawn = 10;
         for (int i = 0; i < coinsToSpawn; i++)
         {
-            GameObject temp = Instantiate(coinPrefab);
+            GameObject temp = Instantiate(coinPrefab, transform);
             temp.transform.position = GetRandomPointInCollider(GetComponent<Collider>());
         }
     }
